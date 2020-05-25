@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function() {
+
+x=[]
+y=[]
+function addData(data) {
+	for (var i = 0; i < data.length; i++) {
+	        x.push(data[i].geoName);
+	        y.push(data[i].AndhraPradesh);
+	}
+	console.log(x,y)
+	let trace1 = {
+  		x: x,
+		y: y,
+  		mode: "lines"
+};
+	Plotly.newPlot('chartContainer', [trace1]);
+	
+
+}
+
+$.getJSON("http://172.17.0.5:5002/data", addData);
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</body>
+</html>
